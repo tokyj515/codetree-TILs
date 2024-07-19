@@ -51,11 +51,15 @@ for k in range(1, max_val+1):
                 dfs(i, j, k)
                 cnt += 1
 
-    # answer.append((k, cnt))
-    heapq.heappush(answer, (-cnt, k))
+    answer.append((k, cnt))
+#     heapq.heappush(answer, (-cnt, k))
 
 
 
-cnt, k = heapq.heappop(answer)
+# cnt, k = heapq.heappop(answer)
 
-print(k, -cnt)
+# print(-cnt, k)
+
+answer = sorted(answer, key=lambda x: (-x[1], x[0]))
+
+print(answer[0][0], answer[0][1])
