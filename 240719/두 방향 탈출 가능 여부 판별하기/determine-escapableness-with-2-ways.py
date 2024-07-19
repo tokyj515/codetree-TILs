@@ -42,7 +42,7 @@ if graph[0][0] != 1:
     print(0)
 else:
     dfs(0, 0)
-    print(path)
+    # print(path)
 
     if (0, 0) in path and (n-1, m-1) in path:
         print(1)
