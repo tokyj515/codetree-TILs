@@ -38,7 +38,7 @@ def dfs(x, y):
 
 for i in range(n):
     for j in range(m):
-        if graph[i][j] != 1:
+        if graph[i][j] == 1:
             dfs(i, j)
 
 print(0)
