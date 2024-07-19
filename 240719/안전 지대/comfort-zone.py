@@ -1,6 +1,7 @@
 import sys
 import heapq
 # sys.setrecursionlimit(10**7)
+sys.setrecursionlimit(2000) 
 
 
 input = sys.stdin.readline
