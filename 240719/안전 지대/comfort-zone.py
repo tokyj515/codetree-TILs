@@ -18,12 +18,10 @@ answer = []
 
 for _ in range(n):
     temp = list(map(int, input().strip().split()))
-    print(temp)
     graph.append(temp)
-
     max_val = max(max_val, max(temp))
 
-print(max_val)
+# print(max_val)
 
 
 
@@ -56,4 +54,8 @@ for k in range(1, max_val+1):
     # answer.append((k, cnt))
     heapq.heappush(answer, (-cnt, k))
 
-print(answer)
+
+
+cnt, k = heapq.heappop(answer)
+
+print(-cnt, k)
