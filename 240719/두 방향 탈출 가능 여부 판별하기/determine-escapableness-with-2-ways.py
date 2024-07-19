@@ -21,7 +21,7 @@ def dfs(x, y):
     visited[x][y] = 1
     global cnt
     cnt += 1
-    # print(f"{x}, {y}")
+    print(f"{x}, {y}")
     
     if x == n-1 and y ==n-1:
         print(1)
@@ -41,4 +41,5 @@ for i in range(n):
         if graph[i][j] == 1:
             dfs(i, j)
 
+print("cnt ", cnt)
 print(0)
