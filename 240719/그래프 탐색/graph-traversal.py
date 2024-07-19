@@ -20,14 +20,18 @@ for _ in range(m):
 def dfs(v):
     visited[v] = 1
     # print(v)
+    global cnt
+    cnt += 1 
 
     for n in graph[v]: 
         if not visited[n]:
             dfs(n)
 
-for i in range(1, n+1):
-    if not visited[i]:
-        dfs(i)
-        cnt += 1 
+# for i in range(1, n+1):
+#     if not visited[i]:
+#         dfs(i)
+#         cnt += 1 
 
-print(cnt)
+dfs(1)
+
+print(cnt-1)
