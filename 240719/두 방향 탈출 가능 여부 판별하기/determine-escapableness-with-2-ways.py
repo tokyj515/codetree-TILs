@@ -21,7 +21,11 @@ def dfs(x, y):
     visited[x][y] = 1
     global cnt
     cnt += 1
-    print(f"{x}, {y}")
+    # print(f"{x}, {y}")
+    
+    if x == n-1 and y ==n-1:
+        print(1)
+        exit()
 
     for i in range(2):
         nx = x + dx[i]
@@ -34,4 +38,4 @@ def dfs(x, y):
 
 dfs(0, 0)
 
-print(cnt)
+print(0)
