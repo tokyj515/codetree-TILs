@@ -36,6 +36,9 @@ def dfs(x, y):
                 dfs(nx, ny)
 
 
-dfs(0, 0)
+for i in range(n):
+    for j in range(m):
+        if graph[i][j] != 1:
+            dfs(i, j)
 
 print(0)
