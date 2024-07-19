@@ -58,4 +58,4 @@ for k in range(1, max_val+1):
 
 cnt, k = heapq.heappop(answer)
 
-print(-cnt, k)
+print(k, -cnt)
