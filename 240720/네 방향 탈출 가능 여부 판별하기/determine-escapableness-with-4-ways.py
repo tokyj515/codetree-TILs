@@ -34,6 +34,7 @@ def bfs(x, y):
             if 0<=nx and nx <n and 0<= ny and ny<m:
                 if not visited[nx][ny] and graph[nx][ny] == 1:
                     queue.append((nx, ny))
+                    visited[nx][ny] = 1
 
 
 bfs(0, 0)
