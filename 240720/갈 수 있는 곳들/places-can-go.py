@@ -43,7 +43,6 @@ def bfs(x, y):
 for _ in range(tc):
     x, y = map(int, input().split(" "))
     bfs(x-1, y-1)
-    print()
 
 
 print(len(set(point)))
