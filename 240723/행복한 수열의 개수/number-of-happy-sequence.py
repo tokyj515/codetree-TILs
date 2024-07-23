@@ -28,7 +28,7 @@ else:
 
             if cnt == m:
                 happy += 1
-        print(f"row: {row} cnt: {cnt} happy: {happy}")
+        # print(f"row: {row} cnt: {cnt} happy: {happy}")
 
     for row in t_graph:
         cnt = 0
@@ -39,5 +39,5 @@ else:
             if cnt == m:
                 cnt = 0
                 happy += 1
-        print(f"row: {row} cnt: {cnt} happy: {happy}")
+        # print(f"row: {row} cnt: {cnt} happy: {happy}")
     print(happy)
