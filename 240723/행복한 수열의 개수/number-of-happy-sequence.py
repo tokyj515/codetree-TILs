@@ -28,17 +28,16 @@ else:
 
             if cnt == m:
                 happy += 1
-        # print(f"row: {row} cnt: {cnt} happy: {happy}")
+        print(f"row: {row} cnt: {cnt} happy: {happy}")
 
     for row in t_graph:
-        cnt = 1
+        cnt = 0
         for i in range(n-m+1):
-            if row[i] != row[i+1]:
-                continue
-            
-            cnt += 1
+            if row[i] == row[i+1]:
+                cnt += 1
 
             if cnt == m:
+                cnt = 0
                 happy += 1
-        # print(f"row: {row} cnt: {cnt} happy: {happy}")
+        print(f"row: {row} cnt: {cnt} happy: {happy}")
     print(happy)
