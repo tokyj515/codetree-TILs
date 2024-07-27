@@ -3,12 +3,12 @@ from collections import deque
 
 input = sys.stdin.readline
 
-n, t = map(int, input().split(" "))
+n, t = map(int, input().rstrip().split(" "))
 
 graph = []
 
 for i in range(2):
-    temp = list(map(int, input().split(" ")))
+    temp = list(map(int, input().rstrip().split(" ")))
     graph.append(temp)
     # if i == 1:
     #     temp.reverse()
