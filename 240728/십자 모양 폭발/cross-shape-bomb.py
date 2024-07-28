@@ -1,11 +1,8 @@
 import sys
-
-
 input = sys.stdin.readline
 
 
 n = int(input())
-
 graph = []
 
 for _ in range(n):
@@ -54,13 +51,7 @@ if scope >= n:
         graph[i][y-1] = 0
         graph[x-1][i] = 0
 
-# elif 0 <= y-2 and y+1 < n and 0<= x-2 and x+1 <n:
-#     # 가로
-#     for i in range(y-2, y+1):
-#         graph[x-1][i] = 0
-#     # 세로
-#     for i in range(x-2, x+1):
-#         graph[i][y-1] = 0
+
 else:
     start_x = max(0, x-2)
     end_x = min(x+1, n)
