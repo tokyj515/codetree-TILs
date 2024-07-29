@@ -19,8 +19,8 @@ dy = [-1, 0, 1, 0]
 # print(f"초기: {x}, {y}: {nd }")
 
 for t in range(time):
-    nx = x + dx[direct[nd]]
-    ny = y + dy[direct[nd]]
+    ny = y + dx[direct[nd]]
+    nx = x + dy[direct[nd]]
 
     if not (0 <= nx and nx < n and  0<= ny and ny <n):
         if nd == 'L': nd = "R"
@@ -34,4 +34,4 @@ for t in range(time):
 
     # print(f"{t}초 때 / {x}, {y}: {nd }")
 
-print(y+1, x+1)
+print(x+1, y+1)
