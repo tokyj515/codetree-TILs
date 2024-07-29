@@ -19,7 +19,7 @@ order = list(input().rstrip())
 
 for o in order:
     if o == 'L':    
-        nd = nd - (nd+1)%4
+        nd = (nd+3)%4
 
     elif o == 'R':
         nd = (nd+1)%4
@@ -28,5 +28,6 @@ for o in order:
         nx = nx + dx[nd]
         ny = ny + dy[nd]
 
+    # print(nx, ny, nd)
 
 print(nx, ny)
