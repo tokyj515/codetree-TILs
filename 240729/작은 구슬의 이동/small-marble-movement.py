@@ -4,7 +4,7 @@ import sys
 input = sys.stdin.readline
 
 
-n, t = map(int, input().split(" "))
+n, time = map(int, input().split(" "))
 
 x, y, nd = input().rstrip().split(" ")
 
@@ -16,9 +16,9 @@ direct = {"U": 0, "R":1, "D": 2, "L":3}
 dx = [0, 1, 0, -1] 
 dy = [-1, 0, 1, 0] 
 
-# print(f"{x}, {y}: {nd }")
+# print(f"초기: {x}, {y}: {nd }")
 
-for _ in range(t):
+for t in range(time):
     nx = x + dx[direct[nd]]
     ny = y + dy[direct[nd]]
 
@@ -32,6 +32,6 @@ for _ in range(t):
         x = nx
         y = ny
 
-    # print(f"{x}, {y}: {nd }")
+    # print(f"{t}초 때 / {x}, {y}: {nd }")
 
-print(y, x)
+print(y+1, x+1)
