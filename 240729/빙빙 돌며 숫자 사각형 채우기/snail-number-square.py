@@ -24,8 +24,8 @@ for i in range(2,  n* m+1):
     ny = y + dy[d]
 
     # 방향과 방문한 값인지 확인
-    if not(0<= nx and nx < m and 0<= ny and ny <n) or graph[nx][ny] != 0:
-        d = (d+1)%4
+    if not(0<= nx and nx < n and 0<= ny and ny <m) or graph[nx][ny] != 0:
+        d = (d+1) % 4
 
     x = x + dx[d]
     y = y + dy[d]
