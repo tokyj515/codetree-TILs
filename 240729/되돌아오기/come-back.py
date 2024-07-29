@@ -28,7 +28,7 @@ for _ in range(n):
         y = y + dy[direct[di]]
         cnt += 1
 
-        if x ==  start_x and y == start_y:
+        if x == 0 and y == 0:
             print(cnt)
             exit()
 
