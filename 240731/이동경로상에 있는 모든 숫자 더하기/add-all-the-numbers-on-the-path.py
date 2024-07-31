@@ -10,7 +10,7 @@ cmd = list(input().rstrip())
 graph = []
 
 for _ in range(n):
-    temp = list(map(int, input().split(" ")))
+    temp = list(map(int, input().rstrip().split(" ")))
     graph.append(temp)
 
 
