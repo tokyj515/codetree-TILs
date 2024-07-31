@@ -14,15 +14,18 @@ for _ in range(n):
     graph.append(temp)
 
 
-x = 0
-y = 0
+x = n //2
+y = n //2
 d = 0
 
+# print(x, y)
+
 # N 0 -> E 1 -> S 2 -> W 3
-dx = [1, 0, -1, 0] 
+dx = [-1, 0, 1, 0] 
 dy = [0, 1, 0, -1]
 
-cnt = 0
+
+cnt = graph[x][y]
 
 # print(cmd)
 
@@ -39,9 +42,10 @@ for c in cmd:
         if not (0<= nx and nx < n and 0<= ny and ny < n):
             continue
         
-        cnt += graph[x][y]
         x = nx
         y = ny
+        cnt += graph[x][y]
+
         
 
     # print(f"c: {c} / {x} {y} => d: {d}, cnt: {cnt}")
