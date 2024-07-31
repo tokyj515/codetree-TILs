@@ -39,10 +39,11 @@ for c in cmd:
         if not (0<= nx and nx < n and 0<= ny and ny < n):
             continue
         
+        cnt += graph[x][y]
         x = nx
         y = ny
-        cnt += graph[x][y]
+        
 
-    # print(f"{x} {y} => d: {d}, cnt: {cnt}")
+    # print(f"c: {c} / {x} {y} => d: {d}, cnt: {cnt}")
 
 print(cnt)
