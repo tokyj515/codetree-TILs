@@ -17,7 +17,7 @@ def natural(num):
 s = list(input().rstrip())
 max_val = 0
 
-if s == 1:
+if s == '1':
     print(0)
     exit()
 
