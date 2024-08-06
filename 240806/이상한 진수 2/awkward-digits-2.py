@@ -38,7 +38,7 @@ for i in range(len(s)):
 
     
     
-    s[i] = '0'x
+    s[i] = '0'
     max_val = max(max_val, natural(''.join(s)))
     print(s, max_val)
 
