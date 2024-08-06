@@ -29,18 +29,16 @@ for i in range(1, n*m+1):
     ny = y + dy[d]
 
 
-    # 다음 위치가 범위를 벗어나거나 이미 방문한 경우, 방향 전환
+    
     if not (0 <= nx < n and 0 <= ny < m and graph[nx][ny] == 0):
         d = (d + 1) % 4
-        nx, ny = x + dx[d], y + dy[d]
+        nx = x + dx[d]
+        ny = y + dy[d]
 
-    # 위치 업데이트
-    x, y = nx, ny
-        
 
-    # for row in graph:
-    #     print(row)
-    # print()
+    x = nx
+    y = ny
+
 
 for row in graph:
     print(*row)
