@@ -17,6 +17,11 @@ def natural(num):
 s = list(input().rstrip())
 max_val = 0
 
+if s == 0:
+    print(0)
+    exit()
+
+
 for i in range(len(s)):
     temp = s[i]
 
