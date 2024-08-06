@@ -12,43 +12,26 @@ def natural(num):
     return result
 
 
-def isOriginList(origin, s):
-    for a ,b in zip(origin, s):
-        if a != b:
-            return False
-    return True
-
-
-
-s = list(input().rstrip())
 max_val = 0
-origin = s
 
-if len(s) == 1:
-    if s[0] == '0':
-        print(1)
-    else:
-        print(0)
-    eixt()
+binary = list(input().rstrip())
 
+origin = binary[::]
 
+for i in range(len(binary)):
+    temp = binary[i]
 
-for i in range(len(s)):
-    temp = s[i]
-
+    binary[i] = '0'
+    if origin != binary:
+        max_val = max(max_val, natural(binary))
     
-    
-    s[i] = '0'
-    max_val = max(max_val, natural(''.join(s)))
-    print(s, max_val)
+    binary[i] = '1'
+    if origin != binary:
+        max_val = max(max_val, natural(binary))
 
+    # print(max_val)
 
-    s[i] = '1'
-    max_val = max(max_val, natural(''.join(s)))
-    print(s, max_val)
+    binary[i] = temp
 
-
-    s[i] = temp
-
-
+        
 print(max_val)
