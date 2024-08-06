@@ -17,8 +17,8 @@ d = 0
 
 graph = [[0 for _ in range(m)] for _ in range(n)]
 
-for i in range(65, 65+ n*m):
-    graph[x][y] = chr(i)
+for i in range(n*m):
+    graph[x][y] = chr((i%26) + 65)
 
     nx = x + dx[d]
     ny = y + dy[d]
