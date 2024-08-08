@@ -6,13 +6,13 @@ m = int(input())
 a, b = map(int, input().split())
 
 
-num = [x for x in range(m)]
+# num = [x for x in range(m)]
 
 # print(num)
 
-def binary_search(target, num):
+def binary_search(target, m):
     left = 0
-    right = len(num)-1
+    right = m-1
     cnt = 0
 
     while left <= right:
@@ -20,9 +20,9 @@ def binary_search(target, num):
         cnt += 1
         # print(f"{left} {right}: {cnt}")
 
-        if num[mid] == target:
+        if mid == target:
             return cnt
-        elif num[mid] > target:
+        elif mid > target:
             right = mid -1
         else:
             left = mid+1
@@ -30,11 +30,11 @@ def binary_search(target, num):
     return -1
 
 
-min_cnt = len(num)
+min_cnt = m
 max_cnt = 0
 
 for i in range(a-1, b):
-    min_cnt = min(binary_search(i, num), min_cnt)
-    max_cnt = max(binary_search(i, num), max_cnt)
+    min_cnt = min(binary_search(i, m), min_cnt)
+    max_cnt = max(binary_search(i, m), max_cnt)
 
 print(min_cnt, max_cnt)
