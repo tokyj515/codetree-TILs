@@ -42,9 +42,9 @@ for i in range(len(num)):
         counter[b] -= counter[a]
         counter.pop(a)
     
-    print(cnt)
-    print(counter)
-    print()
+    # print(cnt)
+    # print(counter)
+    # print()
 
 
 print(cnt)
