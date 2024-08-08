@@ -8,7 +8,7 @@ n, m = map(int, input().split())
 
 num = list(map(int, input().split()))
 
-
+num.sort()
 
 def lower_bound(target, num):
     left = 0
