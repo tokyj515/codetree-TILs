@@ -13,6 +13,12 @@ counter = dict(Counter(num))
 cnt = 0
 
 
+if len(counter.keys()) == 1:
+    print(len(num)*2)
+    exit()
+
+
+
 for i in range(len(num)):
 
     a = num[i]
@@ -21,7 +27,7 @@ for i in range(len(num)):
         b  = k-a
     else:
         continue
-    
+
 
     if counter[a] == counter[b]:
         cnt += counter[a]
@@ -36,9 +42,9 @@ for i in range(len(num)):
         counter[b] -= counter[a]
         counter.pop(a)
     
-    # print(cnt)
-    # print(counter)
-    # print()
+    print(cnt)
+    print(counter)
+    print()
 
 
 print(cnt)
