@@ -17,14 +17,11 @@ for _ in range(n):
         heappush(heap, -int(cmd[1]))
 
     elif cmd[0] == 'pop':
-        # top = -heap[0]
-        # heappop(heap)
         top = heappop(heap)
         print(-top)
 
     elif cmd[0] == 'size':
         print(len(heap))
-
 
     elif cmd[0] == 'empty':
         if heap:
