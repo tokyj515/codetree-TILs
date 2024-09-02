@@ -17,7 +17,7 @@ dy = [0, 0, -1, 1]
 dx = [1, -1, 0, 0]
 
 for _ in range(n):
-    temp = list(map(int, input().split(" ")))
+    temp = list(map(int, input().rstrip().split(" ")))
     graph.append(temp)
 
 visited = [[0 for _ in range(n)] for _ in range(n)]
