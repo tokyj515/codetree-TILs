@@ -24,19 +24,23 @@ for _ in range(n):
 def simul():
     global x, y
 
+    next_x, next_y = x, y
+    max_value = graph[x][y]
 
     for i in range(4):
         nx = x + dx[i]
-        ny = y+ dy[i]
+        ny = y + dy[i]
 
-        if 0 <= nx and nx < n and 0<= ny and ny < n:
-            if graph[nx][ny] > graph[x][y]:
-                # answer.append(graph[nx][ny])
-                x = nx
-                y = ny
-                return True
+        if 0 <= nx < n and 0 <= ny < n:
+            if graph[nx][ny] > max_value:
+                next_x, next_y = nx, ny
+                max_value = graph[nx][ny]
+
+    if max_value > graph[x][y]:
+        x, y = next_x, next_y
+        return True
+
     return False
-        
 
 
 answer.append(graph[x][y])
