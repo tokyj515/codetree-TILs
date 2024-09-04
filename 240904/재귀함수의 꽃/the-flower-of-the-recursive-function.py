@@ -9,6 +9,6 @@ def func(k):
     print(k, end=" ")
 
 
-n = 5
+n = int(input())
 
 func(n)
