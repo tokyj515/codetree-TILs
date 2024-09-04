@@ -19,8 +19,8 @@ for _ in range(n):
 #     print(row)
 
 
-for i in range(k-1, k+m):
-    graph[k][i] = 1
+for i in range(k, k+m):
+    graph[k][i-1] = 1
 
 for row in graph:
     print(*row)
