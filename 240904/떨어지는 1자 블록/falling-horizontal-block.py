@@ -18,9 +18,12 @@ for _ in range(n):
 # for row in graph:
 #     print(row)
 
+if n == 1 and k == 1:
+    print("1")
+else:
 
-for i in range(k, k+m):
-    graph[k][i-1] = 1
+    for i in range(k, k+m):
+        graph[k][i-1] = 1
 
-for row in graph:
-    print(*row)
+    for row in graph:
+        print(*row)
