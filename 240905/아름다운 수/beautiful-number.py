@@ -1,21 +1,47 @@
 import sys
 import copy
 
-input = sys.stdin.readline
 
 result = []
 answer = []
+
 num = [1, 2, 3, 4]
+
+cnt = 0
 
 n = int(input())
 
 
-def backtrack(dep):
-    global n
+def is_beautiful(answer):
+    i = 0
 
+    # 인덱스가 길이보다 작을 때만
+    while i < n :
+
+        if i + answer[i] - 1 >= n:
+            return False
+        
+
+        # 현 위치의 숫자가 있는 만큼 길이가 필요하니까
+        for j in range(i, i+answer[i]):
+            if answer[i] != answer[j]:
+                return False
+
+        i += answer[i]
+        
+    return True
+
+
+
+def backtrack(dep):
+    global cnt, n
+
+    # 일정 길이만큼 있는지 확인
     if dep == n:
-        temp = copy.deepcopy(answer)
-        result.append(''.join(map(str, temp)))
+        if is_beautiful(answer):
+            temp = copy.deepcopy(answer)
+            result.append(temp)
+            cnt += 1
         return
 
     for i in range(4):
@@ -25,19 +51,8 @@ def backtrack(dep):
 
         answer.pop()
 
-
+    
 backtrack(0)
 
 # print(result)
-
-cnt = 0
-for r in result:
-    origin = r
-
-    r = r.replace('4444', '*').replace('333', '*').replace('22', "*").replace('1', '*')
-
-    if r in ['*'*i for i in range(1, n+1)]:
-        # print(origin)
-        cnt += 1
-
 print(cnt)
