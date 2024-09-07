@@ -18,7 +18,7 @@ def get_point(answer):
     # 말의 순서 -> answer -> 턴 순서 -> 1 2 1 2
 
     # 각 말의 위치
-    position = [0 for _ in range(k)] # -> 1, 2, 3번말
+    position = [1 for _ in range(k)] # -> 1, 2, 3번말
 
     # 해당 시점에서 움직이는 수 -> move -> 2 4 2 4
 
@@ -28,7 +28,7 @@ def get_point(answer):
     # print(position)
 
 
-    cnt = 1
+    cnt = 0
 
     for p in position:
         if p >= m:
