@@ -6,7 +6,7 @@ import copy
 
 n, m, k = map(int, input().split(" "))
 
-move = list(map(int, input().split(" ")))
+move = list(map(int, input().rstrip().split(" ")))
 horse = [i for i in range(1, k+1)]
 
 answer = []
