@@ -28,7 +28,7 @@ def get_point(answer):
     # print(position)
 
 
-    cnt = 0
+    cnt = 1
 
     for p in position:
         if p >= m:
