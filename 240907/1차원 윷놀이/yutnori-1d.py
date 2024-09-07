@@ -20,17 +20,21 @@ def get_point(answer):
     # 각 말의 위치
     position = [0 for _ in range(k)] # -> 1, 2, 3번말
 
-    # 말 개수 -> k, 해당 시점에서 움직이는 수 -> move -> 2 4 2 4
+    # 해당 시점에서 움직이는 수 -> move -> 2 4 2 4
 
     for i in range(n):
         position[answer[i]-1] += move[i]
 
-    
+    # print(position)
+
+
     cnt = 0
 
     for p in position:
-        if p == m:
+        if p >= m:
             cnt += 1
+
+    # print(f"{answer}, {move} => {position}")
     
     return cnt
 
@@ -49,7 +53,9 @@ def backtrack(dep):
         result.append(temp)
 
         cnt = max(cnt, get_point(temp))
-        # print(f"{temp} => {cnt}")
+
+        # if get_point(temp) == 1:
+        #     print(f"{temp} => {cnt}")
 
 
         return
@@ -64,5 +70,5 @@ def backtrack(dep):
 
 backtrack(0)
 
-# print(result)
 print(cnt)
+# print(result)
