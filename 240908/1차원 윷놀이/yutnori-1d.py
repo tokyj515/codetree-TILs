@@ -49,10 +49,10 @@ def backtrack(dep):
     global cnt
 
     if dep == n:
-        temp = copy.deepcopy(answer)
+        # temp = copy.deepcopy(answer)
         # result.append(temp)
 
-        cnt = max(cnt, get_point(temp))
+        cnt = max(cnt, get_point(answer))
 
         # if get_point(temp) == 1:
         #     print(f"{temp} => {cnt}")
