@@ -10,7 +10,7 @@ move = list(map(int, input().rstrip().split(" ")))
 horse = [i for i in range(1, k+1)]
 
 answer = []
-result = []
+# result = []
 
 cnt = 0
 
@@ -50,7 +50,7 @@ def backtrack(dep):
 
     if dep == n:
         temp = copy.deepcopy(answer)
-        result.append(temp)
+        # result.append(temp)
 
         cnt = max(cnt, get_point(temp))
 
