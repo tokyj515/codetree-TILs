@@ -2,7 +2,7 @@ n = int(input())
 
 graph = []
 for _ in range(n):
-    temp = list(map(int, input().split(" ")))
+    temp = list(map(int, input().rstrip().split(" ")))
     graph.append(temp)
 
 # visited = [[0 for _ in range(n)] for _ in range(n)]
