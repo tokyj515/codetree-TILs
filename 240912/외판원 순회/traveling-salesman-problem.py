@@ -23,7 +23,11 @@ def find_cost(temp):
         answer.append([temp[i], temp[i+1]])
 
     for i, j in answer:
+        if graph[i][j] == 0:
+            return 0
         cnt += graph[i][j]
+
+    # print(answer, cnt)
     
     return cnt
 
@@ -35,7 +39,8 @@ def backtrack(dep):
     if dep == n-1:
         temp = [0] + answer[::] + [0]
         
-        cnt = min(find_cost(temp), cnt)
+        if find_cost(temp) != 0:
+            cnt = min(find_cost(temp), cnt)
         # print(temp, cnt)
 
         return
