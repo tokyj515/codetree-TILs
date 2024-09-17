@@ -6,7 +6,7 @@ dp = [0 for _ in range(1001)]
 n = int(input())
 
 dp[1] = 2
-dp[2] = 6
+dp[2] = 7
 
 
 for i in range(3, n+1):
