@@ -16,7 +16,7 @@ if n < 5:
     print(dp[n])
     exit()
 
-for i in range(5, n):
-    dp[i] = max(dp[i-3], dp[i-2]) + 1
+for i in range(5, n+1):
+    dp[i] = (max(dp[i-3], dp[i-2]) + 1) % 10007
 
 print(dp[n])
