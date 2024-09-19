@@ -18,22 +18,12 @@ for i in range(1, n+1):
 #     print(row)
 
 
-
-
 max_val = 0
 
-# if k ==1:
-#     for i in range(n):
-#         for j in range(n):
-#             max_val = max(max_val, graph[i][j])
-    
-#     print(max_val)
-#     exit()
 
 
-
-for i in range(1, n+1):
-    for j in range(1, n+1):
+for i in range(k, n+1):
+    for j in range(k, n+1):
             # print(i, j)
             max_val = max(max_val, prefix[i][j] - prefix[i-k][j] - prefix[i][j-k] + prefix[i-k][j-k])
 
