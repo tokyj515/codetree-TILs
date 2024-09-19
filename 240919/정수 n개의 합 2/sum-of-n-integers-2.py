@@ -16,7 +16,7 @@ max_val = 0
 
 
 # 2개 -> 2개 빼기
-for i in range(n-2):
-    max_val = max(-(prefix[i] - prefix[i+2]), max_val)
+for i in range(n-k):
+    max_val = max(-(prefix[i] - prefix[i+k]), max_val)
 
 print(max_val)
