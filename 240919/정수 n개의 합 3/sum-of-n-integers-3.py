@@ -40,7 +40,7 @@ if k ==1:
 
 for i in range(n-k, n):
     for j in range(n-k, n):
-            print(i, j)
+            # print(i, j)
             max_val = max(max_val, prefix[i][j] - prefix[i-k][j] - prefix[i][j-k] + prefix[i-k][j-k])
 
 print(max_val)
