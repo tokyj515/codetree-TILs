@@ -4,7 +4,7 @@ graph = []
 prefix = [[0 for _ in range(n)] for _ in range(n)]
 
 for _ in range(n):
-    temp = list(map(int, input().split(" ")))
+    temp = list(map(int, input().rstrip().split(" ")))
     graph.append(temp)
 
 prefix[0][0] = graph[0][0]
