@@ -1,5 +1,5 @@
 n, k = map(int, input().split(" "))
-num = list(map(int, input().split(" ")))
+num = list(map(int, input().rstrip().split(" ")))
 
 sum = 0
 
