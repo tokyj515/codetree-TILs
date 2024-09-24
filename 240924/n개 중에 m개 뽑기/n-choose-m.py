@@ -17,25 +17,14 @@ def backtrack(dep, pre):
 
     for i in range(pre, n):
 
-        # answer.append(num[i])
-        # backtrack(dep+1, i+1)
-        # answer.pop()
+        answer.append(num[i])
+        backtrack(dep+1, i+1)
+        answer.pop()
 
-        if not visited[i]:
-            answer.append(num[i])
-            visited[i] = 1
-            backtrack(dep+1, i+1)
-            answer.pop()
-            visited[i] = 0
 
 
 backtrack(0, 0)
 
-# for i in range(n):
-#     if not visited[i]:
-#         # visited[i] = 1
-#         backtrack(0, i)
-#         # visited[i] = 0
 
 for res in result:
     print(*res)
