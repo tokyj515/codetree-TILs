@@ -10,7 +10,7 @@ def cal(answer):
     result = answer[0]
 
     for i in range(1, m):
-        result = result | answer[i]
+        result = result ^ answer[i]
     
     return result
 
