@@ -12,7 +12,7 @@ for _ in range(n):
 
 
 arr_len = max([t[0] for t in temp])
-arr = [0 for _ in range(arr_len+1)]
+arr = [0 for _ in range(10000+1)]
 
 for i, alp in temp:
     if alp == 'G':
