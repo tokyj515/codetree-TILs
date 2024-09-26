@@ -29,7 +29,7 @@ if arr_len < k:
     max_val = sum(arr)
 else:
     for i in range(1, arr_len - k+1):
-        print(arr[i:i+k+1], sum(arr[i:i+k+1]))
+        # print(arr[i:i+k+1], sum(arr[i:i+k+1]))
         max_val = max(max_val, sum(arr[i:i+k+1]))
 
 print(max_val)
