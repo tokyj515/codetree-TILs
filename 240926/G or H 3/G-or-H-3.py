@@ -23,7 +23,7 @@ for i, alp in temp:
 # print(arr)
 
 max_val = 0
-for i in range(1, arr_len - k+1):
+for i in range(1, arr_len - k):
     # print(arr[i:i+6+1], sum(arr[i:i+6+1]))
     max_val = max(max_val, sum(arr[i:i+k+1]))
 
