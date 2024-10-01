@@ -16,12 +16,6 @@ max_val = 0
 def backtrack(dep, start_x, start_y, x, y):
     global max_val
 
-    # 경로 시작이랑 끝이 동일하고 2의 배수인지
-    # if dep >= 3:
-    #     if dep % 2 ==1:
-    #         temp = answer[::]
-    #         print(temp)
-    #         return
 
     if dep >= 4:
         temp = answer[::]
@@ -52,6 +46,7 @@ def backtrack(dep, start_x, start_y, x, y):
             backtrack(dep+1, start_x, start_y, nx, ny)
             answer.pop()
             visited[nx][ny] = 0
+
 
 cnt = 0
 for i in range(n):
