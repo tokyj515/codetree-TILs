@@ -1,17 +1,11 @@
-# n, m = map(int, input().split(" "))
-n, m = 4, 5
+n, m = map(int, input().split(" "))
 
-# graph = []
+
+graph = []
 visited = [[0 for _ in range(m)] for _ in range(n)]
-# for _ in range(n):
-#     temp = list(map(int, input().rstrip().split(" ")))
-#     graph.append(temp)
-graph = [
-    [6, 5, 4, 3, 1],
-    [3, 4, 4, 14, 1],
-    [6, 1, 3, 15, 5],
-    [3, 5, 1, 16, 3]
-]
+for _ in range(n):
+    temp = list(map(int, input().rstrip().split(" ")))
+    graph.append(temp)
 
 answer = []
 max_val = 0
