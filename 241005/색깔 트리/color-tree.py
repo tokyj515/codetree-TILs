@@ -39,15 +39,19 @@ def insert(order):
     if p_id != -1:
         p_max_dep = node[p_id][1]
         now_child_node_count = len(graph[p_id])
-        # print(f"m_id: {m_id} => {p_max_dep}, {now_child_node_count}")
         
+        # print("now_child_node_count+1, p_max_dep=> ", now_child_node_count+1, p_max_dep)
         if now_child_node_count+1 < p_max_dep:
             # +1은 본인까지 카운트
             graph[p_id].append(m_id)
 
-    print(f"Insert 후 graph: {dict(graph)}")
+            if not graph[m_id]:
+                graph[m_id] = []
 
 
+    # print(f"Insert 후 graph: {dict(graph)}")
+    # print(f"Insert 후 node: {dict(node)}")
+    # print()
 
 
 
@@ -75,8 +79,6 @@ def set_val():
     value = defaultdict(list)
     visited = []
 
-
-    print("함수 안:", dict(graph))
     nodes = list(graph.keys())
 
     def dfs(root, v, visited):
@@ -109,7 +111,7 @@ q = int(input())
 for _ in range(q):
     order = list(input().split())
     
-    print("order: ", order)
+    # print("order: ", order)
     
     if order[0] == '100':
         insert(order)
@@ -130,7 +132,7 @@ for _ in range(q):
         print(res)
 
     
-    print(dict(graph))
+    # print(dict(graph))
 
 
 
