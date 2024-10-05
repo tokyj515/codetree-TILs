@@ -26,6 +26,7 @@ from collections import defaultdict
 graph = defaultdict(list) #부모: 자식 번호 리스트
 node = defaultdict(list) # 고유 번호: 컬러, 최대깊이
 parent = defaultdict(list)
+dep_cache = defaultdict(int)
 
 
 def insert(order):
@@ -44,17 +45,37 @@ def insert(order):
         possible = True  # 부모 노드로 올라가는 DFS에서 가능 여부 판단
 
         def dfs(v, dep):
-            if dep > node[v][1]:  # 최대 깊이 초과 시 False 반환
+            if v in dep_cache:
+                return dep_cache[v] >= dep
+            
+            if dep > node[v][1]:
+                dep_cache[v] = dep
                 return False
-
-            if parent[v] == [-1]:  # 부모가 없으면 멈추기
+            
+            if parent[v] == [-1]:
+                dep_cache[v] = dep
                 return True
 
-            # 부모로 거슬러 올라가면서 확인
             for i in parent[v]:
-                if not dfs(i, dep + 1):
+                if not dfs(i, dep+1):
+                    dep_cache[v] = dep
                     return False
+
+            dep_cache[v] = dep
             return True
+
+
+            # if dep > node[v][1]:  # 최대 깊이 초과 시 False 반환
+            #     return False
+
+            # if parent[v] == [-1]:  # 부모가 없으면 멈추기
+            #     return True
+
+            # # 부모로 거슬러 올라가면서 확인
+            # for i in parent[v]:
+            #     if not dfs(i, dep + 1):
+            #         return False
+            # return True
 
         # dfs(m_id, 1)로 부모 깊이 체크, 가능할 때만 노드를 그래프에 추가
         if dfs(m_id, 1):
