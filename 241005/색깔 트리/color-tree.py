@@ -1,5 +1,5 @@
 from collections import defaultdict
-# 10/05 16:30 / 1차 제출 17:40 / 2차 제출 18:30(일부 테케 맞춤)
+# 10/05 16:30 / 1차 제출 17:40 / 2차 제출 18:30(일부 테케 맞춤) / 19:30부터 다시 시작 / 
 # 동적으로 노드를 추가하고 색을 변경하는 시스템
 # 본인 번호 mid, 부모 번호 pid, color, max_dep
 # 빨 주 노 초 파 -> 1 2 3 4 5
@@ -25,6 +25,7 @@ from collections import defaultdict
 
 graph = defaultdict(list) #부모: 자식 번호 리스트
 node = defaultdict(list) # 고유 번호: 컬러, 최대깊이
+parent = defaultdict(list)
 
 
 def insert(order):
@@ -34,20 +35,36 @@ def insert(order):
     # 1. 개별 노드 정보 저장
     # node[m_id].append([color, max_dep])
     node[m_id] = [color, max_dep]
+    parent[m_id].append(p_id)
 
-    # 2. 부모 자식 insert 가능한지 확인
+
+
+    # 2. 부모 자식 insert 가능한지 확인 -> 현재부터 부모로 거슬러 올라가기
     if p_id != -1:
-        p_max_dep = node[p_id][1]
-        now_child_node_count = len(graph[p_id])
+        possible = True  # 부모 노드로 올라가는 DFS에서 가능 여부 판단
 
-        if now_child_node_count+1 < p_max_dep:
-            # +1은 본인까지 카운트
-            graph[p_id].append(m_id)
+        def dfs(v, dep):
+            if dep > node[v][1]:  # 최대 깊이 초과 시 False 반환
+                return False
 
-            if not graph[m_id]:
-                graph[m_id] = []
-    else:
-        graph[m_id] = []
+            if parent[v] == [-1]:  # 부모가 없으면 멈추기
+                return True
+
+            # 부모로 거슬러 올라가면서 확인
+            for i in parent[v]:
+                if not dfs(i, dep + 1):
+                    return False
+            return True
+
+        # dfs(m_id, 1)로 부모 깊이 체크, 가능할 때만 노드를 그래프에 추가
+        if dfs(m_id, 1):
+            graph[p_id].append(m_id)  # 부모 노드에 자식 추가
+            graph[m_id] = []  # 자식 노드의 리스트 초기화
+
+        
+
+
+
 
 
 def change_color(order):
@@ -128,8 +145,10 @@ for _ in range(q):
     # print("graph")
     # for row in graph.items():
     #     print(row)
+    # print("node")
+    # for row in node.items():
+    #     print(row)
     # print()
-
 
 # print()
 # print()    
