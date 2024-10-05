@@ -60,6 +60,9 @@ def insert(order):
         if dfs(m_id, 1):
             graph[p_id].append(m_id)  # 부모 노드에 자식 추가
             graph[m_id] = []  # 자식 노드의 리스트 초기화
+    else:
+        graph[m_id] = []
+
 
         
 
