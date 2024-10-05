@@ -1,5 +1,5 @@
 from collections import defaultdict
-# 10/05 16:30
+# 10/05 16:30 / 1차 제출 17:40 / 
 # 동적으로 노드를 추가하고 색을 변경하는 시스템
 # 본인 번호 mid, 부모 번호 pid, color, max_dep
 # 빨 주 노 초 파 -> 1 2 3 4 5
@@ -72,7 +72,7 @@ def set_val():
     value = defaultdict(list)
     visited = []
 
-    nodes = graph.keys()
+    nodes = list(graph.keys())
 
     def dfs(root, v, visited):
         visited.append(v)
@@ -83,16 +83,21 @@ def set_val():
             if i not in visited:
                 dfs(root, i, visited)
 
-
     # print("nodes: ", nodes)
+    # for row in graph.items():
+    #     print(row)
+    
     for i in nodes:
         # print("i: ", i)
         dfs(i, i, []) # 각 노드를 루트로 다시 계산해야 하니까
     
     
+    # for row in value.items():
+    #     print(row)
+
     # value로 값 정하기
     result = 0
-    for v, colors in value.items():
+    for v, colors in list(value.items()):
         cnt = len(set(colors))
         result += cnt*cnt
     
@@ -123,6 +128,8 @@ for _ in range(q):
 
 
     elif order[0] == '400':
+        # print(order)  
+        # print(graph.keys())
         print(set_val())
 
 
@@ -145,6 +152,8 @@ for _ in range(q):
 # print("graph")
 # for row in graph.items():
 #     print(row)
+
+# print(graph.keys())
 # print("node")
 # for row in node.items():
 #     print(row)
