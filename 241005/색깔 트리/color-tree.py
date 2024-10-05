@@ -1,5 +1,5 @@
 from collections import defaultdict
-# 10/05 16:30 / 1차 제출 17:40 / 
+# 10/05 16:30 / 1차 제출 17:40 / 2차 제출 18:30(일부 테케 맞춤)
 # 동적으로 노드를 추가하고 색을 변경하는 시스템
 # 본인 번호 mid, 부모 번호 pid, color, max_dep
 # 빨 주 노 초 파 -> 1 2 3 4 5
@@ -39,20 +39,15 @@ def insert(order):
     if p_id != -1:
         p_max_dep = node[p_id][1]
         now_child_node_count = len(graph[p_id])
-        
-        # print("now_child_node_count+1, p_max_dep=> ", now_child_node_count+1, p_max_dep)
+
         if now_child_node_count+1 < p_max_dep:
             # +1은 본인까지 카운트
             graph[p_id].append(m_id)
 
             if not graph[m_id]:
                 graph[m_id] = []
-
-
-    # print(f"Insert 후 graph: {dict(graph)}")
-    # print(f"Insert 후 node: {dict(node)}")
-    # print()
-
+    else:
+        graph[m_id] = []
 
 
 def change_color(order):
@@ -84,7 +79,6 @@ def set_val():
     def dfs(root, v, visited):
         visited.append(v)
         value[root].append(node[v][0])
-        # print(v)
 
         for i in graph[v]:
             if i not in visited:
@@ -126,14 +120,15 @@ for _ in range(q):
         print(node[m_id][0])
 
 
-    # elif order[0] == '400':
     else:
         res = set_val()
         print(res)
-
     
-    # print(dict(graph))
 
+    # print("graph")
+    # for row in graph.items():
+    #     print(row)
+    # print()
 
 
 # print()
