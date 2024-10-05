@@ -21,6 +21,8 @@ from collections import defaultdict
 # 이 가치를 제곱해서 합한 게 점수
 
 # graph = [[]*100001]
+
+
 graph = defaultdict(list) #부모: 자식 번호 리스트
 node = defaultdict(list) # 고유 번호: 컬러, 최대깊이
 
@@ -43,6 +45,7 @@ def insert(order):
             # +1은 본인까지 카운트
             graph[p_id].append(m_id)
 
+    print(f"Insert 후 graph: {dict(graph)}")
 
 
 
@@ -72,6 +75,8 @@ def set_val():
     value = defaultdict(list)
     visited = []
 
+
+    print("함수 안:", dict(graph))
     nodes = list(graph.keys())
 
     def dfs(root, v, visited):
@@ -83,17 +88,8 @@ def set_val():
             if i not in visited:
                 dfs(root, i, visited)
 
-    # print("nodes: ", nodes)
-    # for row in graph.items():
-    #     print(row)
-    
     for i in nodes:
-        # print("i: ", i)
         dfs(i, i, []) # 각 노드를 루트로 다시 계산해야 하니까
-    
-    
-    # for row in value.items():
-    #     print(row)
 
     # value로 값 정하기
     result = 0
@@ -113,6 +109,7 @@ q = int(input())
 for _ in range(q):
     order = list(input().split())
     
+    print("order: ", order)
     
     if order[0] == '100':
         insert(order)
@@ -127,24 +124,14 @@ for _ in range(q):
         print(node[m_id][0])
 
 
-    elif order[0] == '400':
-        # print(order)  
-        # print(graph.keys())
-        print(set_val())
+    # elif order[0] == '400':
+    else:
+        res = set_val()
+        print(res)
 
+    
+    print(dict(graph))
 
-
-
-
-    # print("==============================")
-    # print(order)
-    # print("graph")
-    # for row in graph.items():
-    #     print(row)
-    # print("node")
-    # for row in node.items():
-    #     print(row)
-    # print()
 
 
 # print()
