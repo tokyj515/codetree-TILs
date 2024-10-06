@@ -52,11 +52,11 @@ for k in range(1, K + 1):  # K턴만큼 게임 진행
         if cnt == max_dist:  # 방향 변경
             cnt = 0
             d = (d + direct) % 4
-            if flag == 0:
-                flag = 1
-            else:
-                flag = 0  # 두 번에 한 번씩 길이 증가
+            if flag:
                 max_dist += direct
+                flag = 0
+            else:
+                flag = 1
 
     # [3] 도망자 잡기 (술래 자리 포함 3칸: 나무가 없는 도망자면 잡힘)
     catcher_set = set(((x, y), (x + dx[d], y + dy[d]), (x + dx[d] * 2, y + dy[d] * 2)))
