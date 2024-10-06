@@ -17,17 +17,17 @@
 
 
 # =======================================================================================
-n, m , h, k = map(int, input().split(" "))
+n, m , h, K = map(int, input().split(" "))
 
 runners = []
 for _ in range(m):
     temp = list(map(int, input().split(" ")))
     runners.append(temp)
 
-trees = []
+trees = set()
 for _ in range(h):
-    temp = set(map(int, input().split(" ")))
-    trees.append(temp)
+    i, j = map(int, input().split(" "))
+    trees.add((i, j))
 
 graph = [[0 for _ in range(n+1)] for _ in range(n+1)]
 
@@ -48,7 +48,9 @@ ry = [-1, 1, 0, 0]
 
 
 # =======================================================================================
-for k in range(1, k+1):
+answer = 0
+
+for k in range(1, K+1):
 
     # 1. 도망자 이동
     for runner in runners:
@@ -57,7 +59,7 @@ for k in range(1, k+1):
             rd = runner[2]
             #다음으로 이동할 좌표
             rnx = runner[0] + rx[rd]
-            rny = runner[0] + ry[rd]
+            rny = runner[1] + ry[rd]
 
             # 도망자의 다음 좌표 범위 확인
             if 1<= rnx and rnx <= n and 1<= rny and rny <= n:
@@ -67,7 +69,7 @@ for k in range(1, k+1):
                 else:
                     nd = opp[runner[2]]
                     rnx = runner[0] + rx[nd]
-                    rny = runner[0] + ry[nd]
+                    rny = runner[1] + ry[nd]
 
                     # 방향을 바꾸고 이동하고 싶은 곳이 술래가 아닌지 한 번 더 확인
                     if (rnx, rny) != (x, y):
@@ -110,18 +112,23 @@ for k in range(1, k+1):
     # 나무가 없는 도망자
     # 도망자를 탐색할 땐 맨 뒤에서부터 해야지 인덱스 관리를 안 할 수 있음
     catcher_set = ((x, y), (x+dx[d], y+dy[d]), (x+dx[d]*2, y+dy[d]*2))
-    answer = 0
+    
 
-    for runner in runners[::-1]:
+    for i in range(len(runners)-1, -1, -1):
+        runner = runners[i]
         if (runner[0], runner[1]) in catcher_set and (runner[0], runner[1]) not in trees:
-            runners.pop()
+            runners.pop(i)
             answer += k
 
     
 
     # 4. 도망자가 없다면? 점수도 없음 -> 술래만 돌고 있음
-    if not runner:
-        break
+    # if not runner:
+    #     break
+
+    # for row in graph:
+    #     print(row)
+    # print(runners)
 
 
 print(answer)
