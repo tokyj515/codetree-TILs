@@ -1,4 +1,4 @@
-# 12:00 - 12:30 | 14:30 - 
+# 12:00 - 12:30 | 14:30 - 16:30
 from collections import defaultdict 
 from collections import deque 
 
@@ -19,17 +19,18 @@ teams = {}
 team_idx = 5
 visited = [[0 for _ in range(N)] for _ in range(N)]
 
+
 def bfs(x, y):
     global team_idx
 
     queue = deque()
-    visited = []
     team_temp = deque() # 머리 ~ 꼬리 순서로
 
     dx = [0, 0, 1, -1]
     dy = [1, -1, 0, 0]
 
-    visited.append((x, y))
+    # visited.append((x, y))
+    visited[x][y] = 1
     queue.append((x, y))
     team_temp.append((x, y))
     graph[x][y] = team_idx
@@ -42,11 +43,12 @@ def bfs(x, y):
             nx = x + dx[i]
             ny = y +dy[i]
 
-            if 0 <= nx and nx <N and 0<= ny and ny < N and not (nx, ny) in visited:
+            if 0 <= nx and nx <N and 0<= ny and ny < N and not visited[nx][ny]:
                 if graph[nx][ny] == 2 or ((x, y) != (nx, ny) and graph[nx][ny] == 3):
                     graph[nx][ny] = team_idx
                     queue.append((nx, ny))
-                    visited.append((nx, ny))
+                    # visited.append((nx, ny))
+                    visited[nx][ny] = 1
                     team_temp.append((nx, ny))
     
     teams[team_idx]= team_temp
@@ -91,8 +93,11 @@ for k in range(K):
 
 
     # [2] 공 던지는 시작 위치 계산
-    dx = [0, -1, 1, 0]
-    dy = [1, 0, 0, -1]
+    # dx = [0, -1, 1, 0]
+    # dy = [1, 0, 0, -1]
+    dx = [0, -1, 0, 1]
+    dy = [1, 0, -1, 0]
+
     d = (k//N)%4
 
     if d == 0: #우
