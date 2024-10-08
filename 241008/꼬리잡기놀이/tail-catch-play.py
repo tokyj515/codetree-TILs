@@ -71,7 +71,8 @@ score = 0
 for k in range(K):
     # [1] 머리 방향으로 한칸이동
     for team in teams.values():
-
+        if len(team) == 0:
+            continue
 
         # 꼬리를 먼저 pop
         ex, ey = team.pop()
