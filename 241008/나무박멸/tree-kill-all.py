@@ -110,27 +110,27 @@ for m in range(M):  # m회 실행
         score += -kill_list[0][0]
 
 
-   # [4] C년 유지하기 - 제초제 뿌린 곳 업데이트
-    x, y = kill_list[0][1]
-    graph[x][y] = C  # 중심 위치에 제초제를 뿌립니다
+    # [4] C년 유지하기 - 제초제 뿌린 곳 업데이트
+        x, y = kill_list[0][1]
+        graph[x][y] = C  # 중심 위치에 제초제를 뿌립니다
 
-    # 대각선 네 방향으로 제초제 전파
-    for i in range(4):
-        for dist in range(1, K + 1):
-            nx = x + dx[i] * dist
-            ny = y + dy[i] * dist
+        # 대각선 네 방향으로 제초제 전파
+        for i in range(4):
+            for dist in range(1, K + 1):
+                nx = x + dx[i] * dist
+                ny = y + dy[i] * dist
 
-            # 범위 안에 있는지 확인
-            if 0 <= nx < N and 0 <= ny < N:
-                # 빈 땅이거나 이미 제초제가 뿌려진 경우, 전파 종료
-                if graph[nx][ny] <= 0:
-                    if C <= graph[nx][ny]:  # 제초제가 뿌려진 경우에도 갱신 가능
+                # 범위 안에 있는지 확인
+                if 0 <= nx < N and 0 <= ny < N:
+                    # 빈 땅이거나 이미 제초제가 뿌려진 경우, 전파 종료
+                    if graph[nx][ny] <= 0:
+                        if C <= graph[nx][ny]:  # 제초제가 뿌려진 경우에도 갱신 가능
+                            graph[nx][ny] = C
+                        break
+                    else:
+                        # 나무가 있는 경우 제초제를 뿌립니다
                         graph[nx][ny] = C
-                    break
                 else:
-                    # 나무가 있는 경우 제초제를 뿌립니다
-                    graph[nx][ny] = C
-            else:
-                break
+                    break
 
 print(score)
