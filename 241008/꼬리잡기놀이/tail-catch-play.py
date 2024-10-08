@@ -3,7 +3,7 @@ from collections import deque
 N, M, K = map(int, input().split(" "))
 
 # 0: 빈칸 | 1: 머리, 2: 중간, 3: 꼬리 | 4: 이동선
-graph = [list(map(int, input().split(" "))) for _ in range(N)]
+graph = [list(map(int, input().rstrip().split(" "))) for _ in range(N)]
 
 # [0] 팀 구성
 teams = {}
