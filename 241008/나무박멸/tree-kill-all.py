@@ -92,25 +92,25 @@ for m in range(M):  # m회 실행
         score += -kill_list[0][0]
 
 
-    # [4] C년 유지하기
-    # 제초제 뿌린 곳 -4
+        # [4] C년 유지하기
+        # 제초제 뿌린 곳 -4
 
-    if c_cnt == C:
-        c_cnt = 0
-        for i in range(N):
-            for j in range(N):
-                if graph[i][j] == -4:
-                    graph[i][j] = 0
+        if c_cnt == C:
+            c_cnt = 0
+            for i in range(N):
+                for j in range(N):
+                    if graph[i][j] == -4:
+                        graph[i][j] = 0
 
 
-    c_cnt += 1
-    for x, y in kill_list[0][2]:
-        graph[x][y] = -4
-    
+        c_cnt += 1
+        for x, y in kill_list[0][2]:
+            graph[x][y] = -4
+        
 
-    # print((f"{m}번째 턴 결과"))
-    # for row in graph:
-    #     print(row)
+        # print((f"{m}번째 턴 결과"))
+        # for row in graph:
+        #     print(row)
 
 
 print(score)
