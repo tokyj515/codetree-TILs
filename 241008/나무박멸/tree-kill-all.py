@@ -2,7 +2,7 @@
 from heapq import heappush
 from heapq import heappop
 
-N, M, K, C = map(int, input().split(" "))
+N, M, K, C = map(int, input().split())
 
 graph = []
 for _ in range(N):
