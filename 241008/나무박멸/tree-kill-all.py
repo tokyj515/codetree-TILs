@@ -1,4 +1,4 @@
-# 18:40
+# 혼자 푼 거 => 18:40 - 20:00 | 
 from heapq import heappush
 from heapq import heappop
 
@@ -9,10 +9,28 @@ for _ in range(N):
     temp = list(map(int, input().rstrip().split(" ")))
     graph.append(temp)
 
+
+for i in range(N):
+    for j in range(N):
+        if graph[i][j] == -1:
+            graph[i][j] = -1000000
+
+
 score = 0
 c_cnt = 0
 
+C = -(C+1)
+
 for m in range(M):  # m회 실행
+
+    # [0] 1년의 시작(제조체 감소)
+    for i in range(N):
+        for j in range(N):
+            if graph[i][j] < 0: #제초제가 뿌려져 있는 경우(건물도 +1 될 거지만 절대 0과 C가 되지 않음)
+                graph[i][j] += 1
+
+
+
 
     # [1] 나무 성장 =============================================================================================
     for i in range(N):
@@ -74,11 +92,11 @@ for m in range(M):  # m회 실행
 
 
                 for i in range(4):
-                    for dist in range(K + 1):
+                    for dist in range(K + 1): #(1, K+1)
                         nx = x + dx[i] * dist
                         ny = y + dy[i] * dist
 
-                        if 0 <= nx and nx < N and 0 <= ny and ny < N and graph[nx][ny] not in [-1]: #and (nx, ny) not in visited:
+                        if 0 <= nx and nx < N and 0 <= ny and ny < N and graph[nx][ny] > 0: #and (nx, ny) not in visited:
                             kill_set.add((nx, ny))
                         else:
                             break
@@ -92,25 +110,27 @@ for m in range(M):  # m회 실행
         score += -kill_list[0][0]
 
 
-        # [4] C년 유지하기
-        # 제초제 뿌린 곳 -4
+   # [4] C년 유지하기 - 제초제 뿌린 곳 업데이트
+    x, y = kill_list[0][1]
+    graph[x][y] = C  # 중심 위치에 제초제를 뿌립니다
 
-        if c_cnt == C:
-            c_cnt = 0
-            for i in range(N):
-                for j in range(N):
-                    if graph[i][j] == -4:
-                        graph[i][j] = 0
+    # 대각선 네 방향으로 제초제 전파
+    for i in range(4):
+        for dist in range(1, K + 1):
+            nx = x + dx[i] * dist
+            ny = y + dy[i] * dist
 
-
-        c_cnt += 1
-        for x, y in kill_list[0][2]:
-            graph[x][y] = -4
-        
-
-        # print((f"{m}번째 턴 결과"))
-        # for row in graph:
-        #     print(row)
-
+            # 범위 안에 있는지 확인
+            if 0 <= nx < N and 0 <= ny < N:
+                # 빈 땅이거나 이미 제초제가 뿌려진 경우, 전파 종료
+                if graph[nx][ny] <= 0:
+                    if C <= graph[nx][ny]:  # 제초제가 뿌려진 경우에도 갱신 가능
+                        graph[nx][ny] = C
+                    break
+                else:
+                    # 나무가 있는 경우 제초제를 뿌립니다
+                    graph[nx][ny] = C
+            else:
+                break
 
 print(score)
