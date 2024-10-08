@@ -9,7 +9,7 @@ N, M, K = map(int, input().split(" "))
 graph = []
 
 for _ in range(N):
-    temp = list(map(int, input().split(" ")))
+    temp = list(map(int, input().rstrip().split(" ")))
     graph.append(temp)
 
 
@@ -41,10 +41,10 @@ def bfs(x, y):
 
         for i in range(4):
             nx = cx + dx[i]
-            ny = cy +dy[i]
+            ny = cy + dy[i]
 
             if 0 <= nx and nx <N and 0<= ny and ny < N and not visited[nx][ny]:
-                if graph[nx][ny] == 2 or ((cx, cy) != (nx, ny) and graph[nx][ny] == 3):
+                if graph[nx][ny] == 2 or ((cx, cy) != (x, y) and graph[nx][ny] == 3):
                     graph[nx][ny] = team_idx
                     queue.append((nx, ny))
                     # visited.append((nx, ny))
