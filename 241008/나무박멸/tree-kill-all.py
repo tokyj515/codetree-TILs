@@ -88,7 +88,8 @@ for m in range(M):  # m회 실행
                     kill += graph[p][q]
                 heappush(kill_list, (-kill, (x, y), kill_set))
 
-    score += -kill_list[0][0]
+    if kill_list:
+        score += -kill_list[0][0]
 
 
     # [4] C년 유지하기
