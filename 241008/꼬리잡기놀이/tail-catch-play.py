@@ -43,7 +43,7 @@ def bfs(x, y):
             ny = y +dy[i]
 
             if 0 <= nx and nx <N and 0<= ny and ny < N and not (nx, ny) in visited:
-                if graph[nx][ny] == 2 or (graph[x][y] != team_temp and graph[nx][ny] == 3):
+                if graph[nx][ny] == 2 or ((x, y) != (nx, ny) and graph[nx][ny] == 3):
                     graph[nx][ny] = team_idx
                     queue.append((nx, ny))
                     visited.append((nx, ny))
@@ -69,6 +69,7 @@ score = 0
 for k in range(K):
     # [1] 머리 방향으로 한칸이동
     for team in teams.values():
+
 
         # 꼬리를 먼저 pop
         ex, ey = team.pop()
@@ -109,7 +110,8 @@ for k in range(K):
         if 0<= x and  x<N and 0<= y and y<N and graph[x][y] > 4:
             team_idx = graph[x][y]
             score += (teams[team_idx].index((x, y))+1) **2
-            teams[team_idx] = teams[team_idx].reverse()
+            # teams[team_idx] = deque(reversed(teams[team_idx]))
+            teams[team_idx].reverse()
             break
 
         x = x + dx[d]
@@ -118,13 +120,3 @@ for k in range(K):
 
 
 print(score)
-
-
-
-
-
-
-
-
-
-    # [3] 점수 계산 & 방향 반전
