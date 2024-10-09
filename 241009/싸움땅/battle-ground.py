@@ -32,28 +32,16 @@ opp = {0:2, 1:3, 2:0, 3:1}
 
 # ===============================================================================================
 
-def leave(i, player):
-    cx, cy, cd, cp, cg, cs = player
-    # 총을 놓고 떠남
-    if cg > 0:
-        gun[cx][cy].append(cg)
-    cg = 0
-
-    # 현재 방향부터 시계방향으로 빈칸 찾기
+def leave(num, ci, cj, cd, cp, cg, cs):
     for k in range(4):
-        nx = cx + dx[(cd+k)%4]
-        ny = cy + dy[(cd+k)%4]
-
-        if 0 <= nx < N and 0 <= ny < N and graph[nx][ny] == 0:
-            # 총이 있다면 가장 강한 총 획득
-            if gun[nx][ny]:
-                cg = max(gun[nx][ny])
-                gun[nx][ny].remove(cg)
-
-            # 내 정보 갱신
-            graph[nx][ny] = i
-            return [nx, ny, (cd+k)%4, cp, cg, cs]
-    return [cx, cy, cd, cp, 0, cs]
+        ni, nj = ci + dx[(cd + k) % 4], cj + dy[(cd + k) % 4]
+        if 0 <= ni < N and 0 <= nj < N and graph[ni][nj] == 0:
+            if len(gun[ni][nj]) > 0:
+                cg = max(gun[ni][nj])
+                gun[ni][nj].remove(cg)
+            graph[ni][nj] = num
+            players[num] = [ni, nj, (cd + k) % 4, cp, cg, cs]
+            return
 
 # ===============================================================================================
 
@@ -104,7 +92,7 @@ for k in range(K): # k라운드
                 cs += (cp + cg) - (ep + eg)  # 점수 획득
 
                 # enemy는 총을 놓고 떠나야 함
-                players[enemy_idx] = leave(enemy_idx, enemy)
+                leave(enemy_idx, ex, ey, ed, ep, eg, es)
                 graph[ex][ey] = 0
                 ex, ey, ed, ep, eg, es = players[enemy_idx]
                 graph[ex][ey] = enemy_idx
@@ -125,7 +113,7 @@ for k in range(K): # k라운드
                 es += (ep + eg) - (cp + cg)  # 점수 획득
 
                 # player는 총을 놓고 떠나야 함
-                players[i] = leave(i, player)
+                leave(i, cx, cy, cd, cp, cg, cs)
                 graph[cx][cy] = 0
                 cx, cy, cd, cp, cg, cs = players[i]
                 graph[cx][cy] = i
