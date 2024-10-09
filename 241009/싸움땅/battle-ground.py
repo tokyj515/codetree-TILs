@@ -92,7 +92,6 @@ for k in range(K): # k라운드
 
                 # enemy는 총을 놓고 떠나야 함
                 ex, ey, ed, ep, eg, es = leave(enemy_idx, ex, ey, ed, ep, eg, es)
-                graph[ex][ey] = enemy_idx
                 players[enemy_idx] = [ex, ey, ed, ep, eg, es]
 
                 # player는 가장 강한 총 얻기 -> 상대방 총, 내 총만 비교해도 됨
@@ -112,7 +111,6 @@ for k in range(K): # k라운드
 
                 # player는 총을 놓고 떠나야 함
                 cx, cy, cd, cp, cg, cs = leave(i, cx, cy, cd, cp, cg, cs)
-                graph[cx][cy] = i
                 players[i] = [cx, cy, cd, cp, cg, cs]
 
                 # enemy는 가장 강한 총 얻기 -> 상대방 총, 내 총만 비교해도 됨
@@ -128,5 +126,5 @@ for k in range(K): # k라운드
                 players[enemy_idx] = [nx, ny, ed, ep, eg, es]
 
 # 각 플레이어 점수 출력
-for player in players.values():
-    print(player[5], end=" ")
+for i in range(1, M+1):
+    print(players[i][5], end=" ")
