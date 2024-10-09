@@ -49,9 +49,7 @@ def leave(num, ci, cj, cd, cp, cg, cs):
 for k in range(K): # k라운드
 
     # 1~M번 플레이어
-    for i in players:
-        if i not in players:
-            continue
+    for i in list(players.keys()):
         player = players[i]
         # x, y, 방향, 파워, 총, 점수
 
