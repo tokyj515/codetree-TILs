@@ -50,14 +50,17 @@ def leave(i, player):
             # 내 정보 갱신
             graph[nx][ny] = i
             return [nx, ny, (cd+k)%4, cp, cg, cs]
-    return player
+    return [cx, cy, cd, cp, 0, cs]
 
 # ===============================================================================================
 
 for k in range(K): # k라운드
 
     # 1~M번 플레이어
-    for i, player in players.items():
+    for i in range(1, M+1):
+        if i not in players:
+            continue
+        player = players[i]
         # x, y, 방향, 파워, 총, 점수
 
         # [1] 플레이어 한 칸 이동
@@ -79,7 +82,8 @@ for k in range(K): # k라운드
                 max_val = max(gun[nx][ny])
 
                 if cg < max_val:
-                    gun[nx][ny].append(cg)
+                    if cg > 0:
+                        gun[nx][ny].append(cg)
                     gun[nx][ny].remove(max_val)
                     cg = max_val
 
@@ -98,13 +102,18 @@ for k in range(K): # k라운드
 
                 # enemy는 총을 놓고 떠나야 함
                 players[enemy_idx] = leave(enemy_idx, enemy)
+                graph[ex][ey] = 0
+                ex, ey, ed, ep, eg, es = players[enemy_idx]
+                graph[ex][ey] = enemy_idx
 
                 # player는 가장 강한 총 얻기 -> 상대방 총, 내 총만 비교해도 됨
                 if cg < eg:
-                    gun[nx][ny].append(cg)
+                    if cg > 0:
+                        gun[nx][ny].append(cg)
                     cg = eg
                 else:
-                    gun[nx][ny].append(eg)
+                    if eg > 0:
+                        gun[nx][ny].append(eg)
 
                 graph[nx][ny] = i
                 players[i] = [nx, ny, cd, cp, cg, cs]
@@ -114,13 +123,18 @@ for k in range(K): # k라운드
 
                 # player는 총을 놓고 떠나야 함
                 players[i] = leave(i, player)
+                graph[cx][cy] = 0
+                cx, cy, cd, cp, cg, cs = players[i]
+                graph[cx][cy] = i
 
                 # enemy는 가장 강한 총 얻기 -> 상대방 총, 내 총만 비교해도 됨
                 if eg < cg:
-                    gun[nx][ny].append(eg)
+                    if eg > 0:
+                        gun[nx][ny].append(eg)
                     eg = cg
                 else:
-                    gun[nx][ny].append(cg)
+                    if cg > 0:
+                        gun[nx][ny].append(cg)
 
                 graph[nx][ny] = enemy_idx
                 players[enemy_idx] = [nx, ny, ed, ep, eg, es]
