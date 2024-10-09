@@ -41,14 +41,15 @@ def leave(num, ci, cj, cd, cp, cg, cs):
                 gun[ni][nj].remove(cg)
             graph[ni][nj] = num
             players[num] = [ni, nj, (cd + k) % 4, cp, cg, cs]
-            return
+            return [ni, nj, (cd + k) % 4, cp, cg, cs]
+    return [ci, cj, cd, cp, 0, cs]
 
 # ===============================================================================================
 
 for k in range(K): # k라운드
 
     # 1~M번 플레이어
-    for i in range(1, M+1):
+    for i in players:
         if i not in players:
             continue
         player = players[i]
@@ -92,10 +93,9 @@ for k in range(K): # k라운드
                 cs += (cp + cg) - (ep + eg)  # 점수 획득
 
                 # enemy는 총을 놓고 떠나야 함
-                leave(enemy_idx, ex, ey, ed, ep, eg, es)
-                graph[ex][ey] = 0
-                ex, ey, ed, ep, eg, es = players[enemy_idx]
+                ex, ey, ed, ep, eg, es = leave(enemy_idx, ex, ey, ed, ep, eg, es)
                 graph[ex][ey] = enemy_idx
+                players[enemy_idx] = [ex, ey, ed, ep, eg, es]
 
                 # player는 가장 강한 총 얻기 -> 상대방 총, 내 총만 비교해도 됨
                 if cg < eg:
@@ -113,10 +113,9 @@ for k in range(K): # k라운드
                 es += (ep + eg) - (cp + cg)  # 점수 획득
 
                 # player는 총을 놓고 떠나야 함
-                leave(i, cx, cy, cd, cp, cg, cs)
-                graph[cx][cy] = 0
-                cx, cy, cd, cp, cg, cs = players[i]
+                cx, cy, cd, cp, cg, cs = leave(i, cx, cy, cd, cp, cg, cs)
                 graph[cx][cy] = i
+                players[i] = [cx, cy, cd, cp, cg, cs]
 
                 # enemy는 가장 강한 총 얻기 -> 상대방 총, 내 총만 비교해도 됨
                 if eg < cg:
