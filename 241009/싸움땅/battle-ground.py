@@ -34,6 +34,9 @@ opp = {0:2, 1:3, 2:0, 3:1}
 
 def leave(i, player):
     cx, cy, cd, cp, cg, cs = player
+    # 총을 놓고 떠남
+    if cg > 0:
+        gun[cx][cy].append(cg)
     cg = 0
 
     # 현재 방향부터 시계방향으로 빈칸 찾기
