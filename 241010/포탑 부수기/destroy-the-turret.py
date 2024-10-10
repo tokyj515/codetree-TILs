@@ -23,10 +23,9 @@ for k in range(K):
         for j in range(N):
             if graph[i][j] <= 0: continue
             
-            if min_val > graph[i][j] 
-                or (min_val == graph[i][j] and pre_max_turn < turn[i][j]) 
-                or (min_val == graph[i][j] and pre_max_turn == turn[i][j] and sx+sy < i+j)
-                or (min_val == graph[i][j] and pre_max_turn == turn[i][j] and sx+sy == i+j and sy < j):
+            if min_val > graph[i][j] or (min_val == graph[i][j] and pre_max_turn < turn[i][j]) or \
+                (min_val == graph[i][j] and pre_max_turn == turn[i][j] and sx+sy < i+j) or \
+                (min_val == graph[i][j] and pre_max_turn == turn[i][j] and sx+sy == i+j and sy < j):
 
                 min_val, pre_max_turn, sx, sy = graph[i][j], turn[i][j], i, j
         
@@ -39,12 +38,11 @@ for k in range(K):
         for j in range(N):
             if graph[i][j] <= 0: continue
 
-            if max_val < graph[i][j]
-                or (max_val == graph[i][j] and pre_min_turn > turn[i][j])
-                or (max_val == graph[i][j] and pre_min_turn == turn[i][j] and ex+ey > i+j)
-                or (max_val == graph[i][j] and pre_min_turn == turn[i][j] and ex+ey == i+j and ey > j ):
+            if max_val < graph[i][j] or (max_val == graph[i][j] and pre_min_turn > turn[i][j]) or \
+                (max_val == graph[i][j] and pre_min_turn == turn[i][j] and ex+ey > i+j) or \
+                (max_val == graph[i][j] and pre_min_turn == turn[i][j] and ex+ey == i+j and ey > j ):
             
-            max_val, pre_min_turn, ex, ey = graph[i][j], turn[i][j], i, j
+                max_val, pre_min_turn, ex, ey = graph[i][j], turn[i][j], i, j
 
     
     print((sx, sy), (ex, ey))
