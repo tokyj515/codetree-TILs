@@ -10,7 +10,7 @@ for _ in range(N):
     temp = list(map(int, input().rstrip().split(" ")))
     graph.append(temp)
 
-turn  = [[0 for _ in range(N)] for _ in range(N)] # 최근 턴 수 저장
+turn  = [[0 for _ in range(M)] for _ in range(N)] # 최근 턴 수 저장
 
 # =============================================================================
 
@@ -50,7 +50,7 @@ def bfs(sx, sy, ex, ey):
 
         for i in range(4):
             nx = (x + dx[i]) %N
-            ny = (y + dy[i])%N
+            ny = (y + dy[i])%M
 
             if not visited[nx][ny] and graph[nx][ny] > 0:
                 queue.append((nx, ny ))
@@ -74,7 +74,7 @@ def bomb(sx, sy, ex, ey):
 
     for i in range(8):
         nx = (ex+dx[i])%N
-        ny = (ey+dy[i])%N
+        ny = (ey+dy[i])%M
 
         if (nx, ny) != (sx, sy):
             graph[nx][ny] = max(0, graph[nx][ny]-damage//2)
@@ -98,7 +98,7 @@ for k in range(K):
     min_val, pre_max_turn, sx, sy = 5001, 0, -1, -1 # 갱신되어 현재 턴에서 가장 작은 값 선정됨
     
     for i in range(N):
-        for j in range(N):
+        for j in range(M):
             if graph[i][j] <= 0: continue
             
             if min_val > graph[i][j] or (min_val == graph[i][j] and pre_max_turn < turn[i][j]) or \
@@ -113,7 +113,7 @@ for k in range(K):
     max_val, pre_min_turn, ex, ey = 0, K, N, M
 
     for i in range(N): 
-        for j in range(N):
+        for j in range(M):
             if graph[i][j] <= 0: continue
 
             if max_val < graph[i][j] or (max_val == graph[i][j] and pre_min_turn > turn[i][j]) or \
@@ -124,7 +124,7 @@ for k in range(K):
 
     
 
-
+    # 시작점, 끝점 모두 선정 후
     graph[sx][sy] += (N+M)
     turn[sx][sy] = k
 
@@ -152,7 +152,14 @@ for k in range(K):
 
 
 
-
+    # 남은 포탑이 1개 이하면 -> 최소 2개가 남아야 함
+    cnt = N*M
+    for row in graph:
+        cnt -= row.count(0)
+    
+    if cnt <= 1:
+        break
+        
 
      
 
