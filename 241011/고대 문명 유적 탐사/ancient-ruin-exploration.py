@@ -12,7 +12,7 @@ things = deque(map(int, input().rstrip().split(" ")))
 
 # ==================================================================================================
 
-def rotate(sx, sy):
+def rotate(graph, sx, sy):
     # 기존 graph의 복사본을 만듦 (깊은 복사)
     new_graph = [row[:] for row in graph]
 
@@ -88,7 +88,7 @@ for k in range(K):  # K 턴을 진행
                 # sx, sy에서 90, 180, 270에 맞춰서 회전
                 new_graph = [row[:] for row in graph]
                 for _ in range(rot):  # 90, 180, 270도 회전 수행
-                    new_graph = rotate(sx, sy)
+                    new_graph = rotate(new_graph, sx, sy)
 
                 cnt = count_clear(new_graph, 0)
 
