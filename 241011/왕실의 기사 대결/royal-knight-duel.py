@@ -19,9 +19,9 @@ for m in range(1, N+1):
     knight[m] = [r,c,h,w,k]
     init_k[m] = k
 
-    for i in range(r, r+h):
-        for j in range(c, c+w):
-            v[i][j] = m
+    # for i in range(r, r+h):
+    #     for j in range(c, c+w):
+    #         v[i][j] = m
 
 
 # for row in v:
