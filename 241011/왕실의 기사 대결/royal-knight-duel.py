@@ -3,11 +3,11 @@ L, N, Q = map(int, input().split(" "))
 # =================================================================================
 
 graph = []
-graph.append([2 for _ in range(N+2)])
+graph.append([2 for _ in range(L+2)])
 for _ in range(L):
     temp = [2] + list(map(int, input().split(" "))) + [2]
     graph.append(temp)
-graph.append([2 for _ in range(N+2)])
+graph.append([2 for _ in range(L+2)])
 
 v = [[0 for _ in range(N+2)] for _ in range(N+2)] # 디버거로 쓰려고
 
