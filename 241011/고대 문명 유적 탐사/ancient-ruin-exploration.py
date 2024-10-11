@@ -19,7 +19,7 @@ def rotate(graph, sx, sy):
     # 90도 회전 규칙 적용
     for i in range(3):
         for j in range(3):
-            new_graph[sx + i][sy + j] = graph[sx + 3 - 1 - j][sy + i]
+            new_graph[sx + j][sy + 3 - 1 - i] = graph[sx + i][sy + j]
 
     return new_graph
 
@@ -83,8 +83,8 @@ for k in range(K):  # K 턴을 진행
     max_graph = [row[:] for row in graph]  # 최대 유물 상태 저장할 배열 초기화
 
     for rot in range(1, 4):  # 회전수 (90, 180, 270도)
-        for sx in range(3):
-            for sy in range(3):
+        for sy in range(3):
+            for sx in range(3):
                 # sx, sy에서 90, 180, 270에 맞춰서 회전
                 new_graph = [row[:] for row in graph]
                 for _ in range(rot):  # 90, 180, 270도 회전 수행
